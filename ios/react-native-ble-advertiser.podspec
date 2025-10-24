@@ -10,10 +10,13 @@ Pod::Spec.new do |s|
   s.homepage     = package['homepage']
   s.license      = package['license']
 
-  s.platform     = :ios, '10.0'
+  s.platforms    = { :ios => "11.0" }
   s.source       = { :git => "https://github.com/vitorpamplona/react-native-ble-advertiser.git", :tag => "#{s.version}" }
-  s.source_files = '*.{h,m}'
+
+  # Corrigido para pegar tudo dentro da pasta ios/
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.requires_arc = true
 
-  s.dependency 'React'
+  # Atualizado para React moderno
+  s.dependency "React-Core"
 end
