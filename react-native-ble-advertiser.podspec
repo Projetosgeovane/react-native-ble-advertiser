@@ -1,6 +1,13 @@
 require 'json'
 
-package = JSON.parse(File.read(File.join(__dir__, '../package.json')))
+package = JSON.parse(File.read(File.join(__dir__, 'package.json'))) rescue {
+  "name" => "react-native-ble-advertiser",
+  "version" => "0.0.17",
+  "description" => "A react-native implementation for sending BLE advertisements",
+  "author" => "Fork",
+  "homepage" => "https://github.com/Projetosgeovane/react-native-ble-advertiser",
+  "license" => "MIT"
+}
 
 Pod::Spec.new do |s|
   s.name         = package['name']
