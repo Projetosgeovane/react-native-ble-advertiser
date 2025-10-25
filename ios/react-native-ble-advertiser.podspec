@@ -11,28 +11,21 @@ Pod::Spec.new do |s|
   s.license      = package['license']
 
   s.platforms    = { :ios => "11.0" }
-  s.source       = { :git => "https://github.com/vitorpamplona/react-native-ble-advertiser.git", :tag => "#{s.version}" }
+  
+  # Usar arquivos locais em vez de Git
+  s.source       = { :path => "." }
 
-  # Corrigido para pegar tudo dentro da pasta ios/
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
+  # Caminho correto para os arquivos fonte
+  s.source_files = "*.{h,m,mm,swift}"
   s.requires_arc = true
 
-  # Dependências para compatibilidade com Expo
+  # Dependências corretas para React Native 0.81.5
   s.dependency "React-Core"
-  s.dependency "React"
   
-  # Configurações específicas para Expo
+  # Configurações para compatibilidade com Expo
   s.pod_target_xcconfig = {
-    'DEFINES_MODULE' => 'YES',
-    'SWIFT_OPTIMIZATION_LEVEL' => '-Owholemodule'
+    "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/React-Core/React\"",
+    "CLANG_CXX_LANGUAGE_STANDARD" => "c++20",
+    "DEFINES_MODULE" => "YES"
   }
-  
-  # Configuração para autolink do Expo
-  s.script_phases = [
-    {
-      :name => 'Copy Swift Files',
-      :script => 'echo "No Swift files to copy"',
-      :execution_position => :before_compile
-    }
-  ]
 end
