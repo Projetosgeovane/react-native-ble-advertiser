@@ -34,11 +34,11 @@
         "index.js",
         "index.d.ts",
         "react-native.config.js",
-        "expo-plugin.js"
+        "react-native-ble-advertiser.js"
     ],
     "expo": {
         "plugins": [
-            "./expo-plugin.js"
+            "react-native-ble-advertiser"
         ]
     }
 }
