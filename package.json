@@ -28,7 +28,7 @@
         }
     },
     "devDependencies": {
-        "@expo/config-plugins": "*"
+        "@expo/config-plugins": "^7.0.0"
     },
     "dependencies": {},
     "files": [

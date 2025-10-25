@@ -4,8 +4,8 @@
 
 'use strict';
 
-import { NativeModules, Platform } from 'react-native';
+const { NativeModules, Platform } = require('react-native');
 
 const { BLEAdvertiser } = NativeModules;
 
-export default BLEAdvertiser;
+module.exports = BLEAdvertiser;
