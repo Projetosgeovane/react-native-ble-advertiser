@@ -1,38 +1,11 @@
-const { withDangerousMod } = require('@expo/config-plugins');
-const fs = require('fs');
-const path = require('path');
+// Plugin simples para react-native-ble-advertiser
+// Este plugin é executado pelo Expo para configurar a biblioteca
 
-const withBLEAdvertiser = (config) => {
-  return withDangerousMod(config, [
-    'ios',
-    async (config) => {
-      const { platformProjectRoot } = config.modRequest;
-      const podfilePath = path.join(platformProjectRoot, 'Podfile');
-
-      if (fs.existsSync(podfilePath)) {
-        let podfileContent = fs.readFileSync(podfilePath, 'utf8');
-
-        // Adiciona a dependência se não existir
-        if (!podfileContent.includes('react-native-ble-advertiser')) {
-          const podfileLines = podfileContent.split('\n');
-          const targetIndex = podfileLines.findIndex(line =>
-            line.includes('target') && line.includes('do')
-          );
-
-          if (targetIndex !== -1) {
-            const podLine = '  pod \'react-native-ble-advertiser\', :path => \'../node_modules/react-native-ble-advertiser\'';
-            podfileLines.splice(targetIndex + 1, 0, podLine);
-            fs.writeFileSync(podfilePath, podfileLines.join('\n'));
-            console.log('✅ Adicionado react-native-ble-advertiser ao Podfile');
-          }
-        } else {
-          console.log('ℹ️  react-native-ble-advertiser já está no Podfile');
-        }
-      }
-
-      return config;
-    },
-  ]);
-};
+function withBLEAdvertiser(config) {
+  // Para bibliotecas nativas, o Expo detecta automaticamente
+  // baseado no .podspec file, então não precisamos fazer nada especial
+  console.log('✅ Plugin react-native-ble-advertiser carregado');
+  return config;
+}
 
 module.exports = withBLEAdvertiser;
