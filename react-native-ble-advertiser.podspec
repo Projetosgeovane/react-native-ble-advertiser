@@ -1,8 +1,12 @@
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
+
 Pod::Spec.new do |s|
   s.name         = "react-native-ble-advertiser"
   s.version      = "0.0.17"
   s.summary      = "A react-native implementation for sending BLE advertisements"
-  s.authors      = { "Fork" => "email@example.com" }
+  s.authors      = { "Fork" => "geovane@projetosgeovane.com.br" }
   s.homepage     = "https://github.com/Projetosgeovane/react-native-ble-advertiser"
   s.license      = "MIT"
 
