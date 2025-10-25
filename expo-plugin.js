@@ -20,9 +20,13 @@ const withBLEAdvertiser = (config) => {
           );
 
           if (targetIndex !== -1) {
-            podfileLines.splice(targetIndex + 1, 0, '  pod \'react-native-ble-advertiser\', :path => \'../node_modules/react-native-ble-advertiser\'');
+            const podLine = '  pod \'react-native-ble-advertiser\', :path => \'../node_modules/react-native-ble-advertiser\'';
+            podfileLines.splice(targetIndex + 1, 0, podLine);
             fs.writeFileSync(podfilePath, podfileLines.join('\n'));
+            console.log('✅ Adicionado react-native-ble-advertiser ao Podfile');
           }
+        } else {
+          console.log('ℹ️  react-native-ble-advertiser já está no Podfile');
         }
       }
 
