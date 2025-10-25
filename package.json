@@ -22,12 +22,23 @@
     "peerDependencies": {
         "react-native": ">=0.50"
     },
+    "peerDependenciesMeta": {
+        "react-native": {
+            "optional": true
+        }
+    },
     "dependencies": {},
     "files": [
         "android/",
         "ios/",
         "index.js",
         "index.d.ts",
-        "react-native.config.js"
-    ]
+        "react-native.config.js",
+        "expo-plugin.js"
+    ],
+    "expo": {
+        "plugins": [
+            "./expo-plugin.js"
+        ]
+    }
 }

@@ -17,6 +17,22 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.requires_arc = true
 
-  # Atualizado para React moderno
+  # Dependências para compatibilidade com Expo
   s.dependency "React-Core"
+  s.dependency "React"
+  
+  # Configurações específicas para Expo
+  s.pod_target_xcconfig = {
+    'DEFINES_MODULE' => 'YES',
+    'SWIFT_OPTIMIZATION_LEVEL' => '-Owholemodule'
+  }
+  
+  # Configuração para autolink do Expo
+  s.script_phases = [
+    {
+      :name => 'Copy Swift Files',
+      :script => 'echo "No Swift files to copy"',
+      :execution_position => :before_compile
+    }
+  ]
 end
