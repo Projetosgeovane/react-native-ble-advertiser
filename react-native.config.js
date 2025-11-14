@@ -3,7 +3,7 @@ module.exports = {
     'react-native-ble-advertiser': {
       platforms: {
         android: {
-          "packageImportPath": "import com.vitorpamplona.bleadvertiser;",
+          "packageImportPath": "import com.vitorpamplona.bleavertiser;",
           "packageInstance": "new BLEAdvertiserPackage()"
         },
         ios: {
